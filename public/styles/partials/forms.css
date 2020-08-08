@@ -1,0 +1,59 @@
+.select-block label,
+.input-block label,
+.textarea-block label {
+  /* Agrupa dois itens para formatar ao mesmo tempo */
+  font-size: 1.4rem;
+  color: var(--color-text-complement);
+}
+
+.input-block input,
+.select-block select,
+.textarea-block textarea {
+  width: 100%;
+  height: 5.6rem;
+  margin-top: 0.8rem;
+  border-radius: 0.8rem;
+  background: var(--color-input-background);
+  border: 1px solid var(--color-line-in-white);
+  outline: 0; /* é a borda que aparece quando um objeto é selecionado */
+  padding: 0 1.6rem;
+  font: 1.6rem Archivo;
+}
+
+.textarea-block textarea {
+  padding: 1.2rem 1.6rem;
+  height: 16rem;
+
+  resize: vertical;
+}
+
+/* Para criarmos uma linha guia que aparece quando uma caixa está selecionada (focada) é necessário aplicar um estilo a um pseudo-objeto criado em html:*/
+
+.input-block:focus-within::after,
+.textarea-block:focus-within::after {
+  /* para o input-block, quando em foco interno, cria um pseudo-objeto, só parece quando a condição within é obedecida. Estamos criando uma linha roxa abaixo das caixas */
+
+  content: ''; /* cria um objeto vazio, é obrigatório */
+
+  width: calc(
+    100% - 3.2rem
+  ); /* faz um cálculo de 100% do disponível menos 3.2rem */
+  height: 2px;
+  background: var(--color-primary-light);
+
+  position: absolute; /* quer dizer onde está este elemento, por padrão, o absoluto é da página como um todo, por que não foi definida uma posição relativa para o elemento pai (.input-block) */
+  left: 1.6rem;
+  right: 1.6rem;
+  bottom: 0;
+}
+
+.input-block,
+.textarea-block {
+  position: relative;
+} /* Criando uma posição relativa para o objeto que se torna absoluta para o objeto-child */
+
+label small {
+  font-size: 1.2rem;
+  padding-left: 1.2rem;
+  color: var(--color-small-info);
+}

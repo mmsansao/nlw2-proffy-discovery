@@ -1,0 +1,148 @@
+#page-landing {
+  background: var(--color-primary);
+}
+
+#page-landing #container {
+  color: var(--color-text-in-primary);
+}
+
+.logo-container img {
+  height: 10rem;
+}
+
+.logo-container {
+  text-align: center; /* alinhou tudo no container ao centro */
+  margin-bottom: 3.3rem; /* margem abaixo do container */
+}
+
+.logo-container h2 {
+  font-weight: 500;
+  font-size: 3.2rem;
+  line-height: 4.6rem;
+  margin-top: 0.8rem;
+}
+
+.hero-image {
+  width: 100%;
+} /* 100% da largura definida para o container em main.css de 90vw e 700px */
+
+.buttons-container {
+  display: flex; /* torna a caixa flexível */
+  justify-content: center;
+  margin: 3.2rem 0;
+}
+
+.buttons-container a {
+  /* formata as caixas dos ícones individualmente */
+  width: 30rem;
+  height: 10.4rem;
+
+  border-radius: 0.8rem;
+  margin-right: 1.6rem;
+
+  font: 700 2.4rem Archivo;
+
+  display: flex; /* para posicionar os elementos dentro da caixa individual */
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none; /* Para limpar qualquer formatação de texto, hiperlink tem sublinhado por padrão */
+
+  transition: background 0.2s; /* controla o efeito quando passa mouse por cima do elemento (hover) */
+
+  color: var(--color-button-text); /* Dá cor ao conteúdo do botão */
+}
+
+/* Vamos aplicar cores individualmente a cada botão, então chamamos a classe de cada um deles */
+
+.buttons-container a.study {
+  background: var(--color-primary-lighter);
+}
+
+.buttons-container a.study:hover {
+  background: var(--color-primary-light);
+} /* efeito quando passa o mouse por cima */
+
+.buttons-container a.give-classes {
+  background: var(--color-secondary);
+  margin-right: 0; /* Para que o segundo botão alinhe à direita da página */
+}
+
+.buttons-container a.give-classes:hover {
+  background: var(--color-secondary-dark);
+} /* efeito quando passa o mouse por cima */
+
+/* ajustando o ícone dentro da caixa vv */
+
+.buttons-container a img {
+  width: 4rem;
+  margin-right: 2.4rem;
+}
+
+.total-conections {
+  font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-conections img {
+  margin-left: 0.8rem;
+}
+
+/* vv media query: aplica determinadas configurações quando um parâmetro for atingido */
+
+@media (max-width: 1100px) {
+  /* quando largura acima de 700px */
+  :root {
+    font-size: 40%; /* todo 1rem vai ser relativo a 10px */
+  }
+
+  .hero-image {
+    height: 45rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  /* quando a largura da tela for maior de 1100px */
+  #page-landing #container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 350px 1fr;
+    grid-template-areas: /* define áreas estratégicas do grid (imagine o grid na forma de strings) */
+      'proffy image image'
+      'button button texting';
+    column-gap: 87px; /* gap entre linhas e colunas */
+    row-gap: 86px;
+  }
+
+  .logo-container {
+    grid-area: proffy;
+    text-align: initial;
+    align-self: center; /* limita o tamanho do elemento pela caixa */
+    margin: 0;
+  }
+
+  .logo-container img {
+    height: 127px; /* sem o align-sef do container a imagem iria vazar da caixa em prol da altura*/
+  }
+
+  .hero-image {
+    grid-area: image;
+    height: 350px;
+  }
+
+  .buttons-container {
+    grid-area: button;
+    justify-content: flex-start;
+    margin: 0;
+  }
+
+  .total-conections {
+    grid-area: texting;
+    text-align: end;
+    font-size: 1.6rem;
+  }
+}
